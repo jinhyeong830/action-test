@@ -27,11 +27,10 @@ jobs:
           echo "MANAGER_PORT=${{ secrets.MANAGER_PORT }}" >> .env
           echo "DB_PROD_USERNAME=${{ secrets.DB_PROD_USERNAME }}" >> .env
           echo "DB_PROD_PASSWORD=${{ secrets.DB_PROD_PASSWORD }}" >> .env
-          echo "DB_PROD_URL=\"${{ secrets.DB_PROD_URL }}\"" >> .env
+          echo "DB_PROD_URL=${{ secrets.DB_PROD_URL }}" >> .env
           echo "JWT_ISSUER=${{ secrets.JWT_ISSUER }}" >> .env
           echo "JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}" >> .env
           echo "SPRING_PROFILES_ACTIVE=prod" >> .env
-#          echo "DB_PROD_URL=${{ secrets.DB_PROD_URL }}" >> .env
 
       - name: Check .env contents
         run: |
