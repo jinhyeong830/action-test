@@ -18,8 +18,7 @@ jobs:
           java-version: 17
           distribution: "temurin"
 
-      - name: Build with Maven
-        run: mvn clean package -DskipTests
+
 
       - name: Create .env file
         run: |
@@ -36,6 +35,9 @@ jobs:
         run: |
           echo "🔍 생성된 .env 내용:"
           cat .env
+
+      - name: Build with Maven
+        run: mvn clean package -DskipTests
 
       - name: Prepare deploy directory
         run: |
