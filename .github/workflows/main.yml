@@ -35,6 +35,15 @@ jobs:
           echo "✅ .env 파일 내용 확인"
           cat .env
 
+      - name: 확인-> .env 및 target/*.jar 존재 확인
+        run: |
+          echo "📂 현재 위치:"
+          pwd
+          echo "📄 .env 내용:"
+          cat .env || echo "❌ .env 없음"
+          echo "📁 target 디렉토리:"
+          ls -al target || echo "❌ target 없음"
+
       - name: Deploy to EC2
         uses: appleboy/scp-action@v0.1.4
         with:
