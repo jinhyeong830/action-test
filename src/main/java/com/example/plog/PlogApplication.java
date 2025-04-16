@@ -29,6 +29,8 @@ public class PlogApplication {
         System.setProperty("DB_PROD_PASSWORD", dotenv.get("DB_PROD_PASSWORD"));
         System.setProperty("DB_PROD_URL", dotenv.get("DB_PROD_URL"));
             System.out.println(dotenv.get("DB_PROD_URL"));
+            System.out.println("password "+dotenv.get("DB_PROD_PASSWORD"));
+            System.out.println(dotenv.get("DB_PROD_USERNAME"));
             System.setProperty("MANAGER_PORT", dotenv.get("MANAGER_PORT"));
         System.setProperty("SERVER_PORT", dotenv.get("SERVER_PORT"));
         System.setProperty("JWT_ISSUER", dotenv.get("JWT_ISSUER"));
