@@ -32,6 +32,11 @@ jobs:
           echo "JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}" >> .env
           echo "SPRING_PROFILES_ACTIVE=prod" >> .env
 
+      - name: Check .env contents
+        run: |
+          echo "🔍 생성된 .env 내용:"
+          cat .env
+
       - name: Prepare deploy directory
         run: |
           mkdir -p deploy
