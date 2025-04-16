@@ -32,17 +32,11 @@ jobs:
           echo "JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}" >> .env
           echo "SPRING_PROFILES_ACTIVE=prod" >> .env
 
-          echo "✅ .env 파일 내용 확인"
-          cat .env
-
-      - name: 확인-> .env 및 target/*.jar 존재 확인
+      - name: Prepare deploy directory
         run: |
-          echo "📂 현재 위치:"
-          pwd
-          echo "📄 .env 내용:"
-          cat .env || echo "❌ .env 없음"
-          echo "📁 target 디렉토리:"
-          ls -al target || echo "❌ target 없음"
+          mkdir -p deploy
+          cp .env deploy/
+          cp target/*.jar deploy/
 
       - name: Deploy to EC2
         uses: appleboy/scp-action@v0.1.4
@@ -50,9 +44,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
-          source: |
-            .env
-            target/*.jar
+          source: deploy/
           target: /home/ubuntu/p-log/P-log_backend/
 
       - name: Restart Spring Boot App on EC2
